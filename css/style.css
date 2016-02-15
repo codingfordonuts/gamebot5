@@ -1,0 +1,230 @@
+/*
+ *  filename:       style.css
+ */
+
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+html{
+	margin: 0;
+}
+
+body {
+	color: #3f312e;
+	background-color: #676767;
+	font: 12pt Arial, Sans-serif;
+}
+
+li.has-sub,
+#btnMobileLogout,
+#btnMobileChange {
+	cursor: pointer;
+}
+
+a {
+	color: #4f4f4f;
+}
+img{
+	border: none;
+	margin: 0 auto;
+}
+
+header {
+	height: 200px;
+	position: relative;
+	background: #004A75 url('../images/hd-bg.gif') repeat-x 0 0;
+	width: 80%;
+	min-height: 125px;
+	margin: 0 auto;
+	color: #F6F6F6;
+}
+
+div#header-in{
+	margin: 0 auto;
+	height: 175px;
+	position:relative;
+}
+
+div#header-in > a > img{
+	padding-top: 1.75em;
+}
+
+#container { 
+	overflow: auto; 
+	width: 80%;
+	margin: 0 auto; 
+	padding: 10px; 
+	padding-bottom: 5px;
+}
+#content { 
+	width: 100%; 
+	min-height: 500px;
+	margin: 0 auto;
+	background: #F6F6F6;
+	overflow: auto;
+}
+#content-in {
+	width: 95%;
+	margin: 0 auto;
+	padding: 1em 0 1em 0;
+}
+#content-in h1 { 
+	font-size: 2em; 
+	margin-top: 0; 
+}
+label {
+	text-align: left;
+	color: white;
+}
+
+form.login{
+	position: relative;
+	width: 35%;
+	float:right;
+	padding-top: 1em;
+}
+
+.textbox { 
+	border: 1px solid #999; 
+	outline:0;
+	height: 1.5em;
+	width: 98%;
+	font-size: 12pt;
+	display: block;
+}
+
+#logged{
+	float: right;
+	margin-right: 15px;
+	margin-top: 15px;
+}
+
+.message {
+	margin: 5px 0 5px 0;
+	color: white;
+	position: relative;
+	display: inline;
+	padding-right: 20px;
+}
+
+#logged > div > form {
+	text-align: right;
+	display: inline;
+}
+
+footer {
+	width: 80%;
+	height: 45px;
+	background: #004A75 url('../images/footer-bg.gif') repeat-x 0 0;
+	margin: 0 auto;
+	text-align: center;
+	padding-bottom: 1em;
+	color: #F6F6F6;
+}
+
+p#footer-in{ 
+	font-weight: bold;
+	margin: 0 auto;
+	padding-top: 1em;
+}
+
+input.error {
+	border: 1px dotted red;
+}
+
+label.error {
+	color: red;
+	font-style: italic;
+}
+
+nav ul li.currentPage {
+	background: rgba(110,110,110,0.6);
+}
+
+nav ul li.currentPage > span,
+nav ul li.currentPage > a > span, 
+nav ul li.currentPage li.currentPage span{
+	color: black;
+}
+
+@media only screen and (min-width: 981px) {
+	/* Menu CSS */
+	nav,
+	nav > ul {
+		background: url(../images/highlight-bg.png) repeat;
+		padding-bottom: 3px;
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 600;
+		width: 100%; 
+		margin: 0 auto; 
+		position: relative; 
+		top: 4px; 
+	}
+	nav:before,
+	nav:after,
+	nav > ul:before,
+	nav > ul:after {
+		content: "";
+		display: table;
+	}
+	nav:after,
+	nav > ul:after {
+		clear: both;
+	}
+	nav {
+		width: auto;
+		zoom: 1;
+		width: 80%;
+		margin: 0 auto;
+		position: relative;
+		top: 4px;
+	}
+	nav > ul {
+		background: url(../images/menu-bg.png) repeat;
+		margin: 0;
+		padding: 0;
+		position: relative;
+	}
+	nav > ul li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	nav > ul > li {
+		float: left;
+		position: relative;
+	}
+	nav > ul > li > a,
+	nav > ul > li > span {
+		padding: 23px 26px;
+		display: block;
+		color: white;
+		font-size: 13px;
+		text-decoration: none;
+		text-transform: uppercase;
+		text-shadow: 0 -1px 0 #0d0d0d;
+		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
+		line-height: 18px;
+	}
+	nav > ul > li:hover > a,
+	nav > ul > li:hover > span {
+		background: rgb(33, 139, 178);
+		text-shadow: 0 -1px 0 #97321f;
+		text-shadow: 0 -1px 0 rgba(122, 42, 26, 0.64);
+	}
+	nav > ul > li > a > span {
+		line-height: 18px;
+	}
+	nav > ul > li.active > a,
+	nav > ul > li > a:active {
+		background: url(../images/hover.png) repeat;
+	}
+}
+
+@media only screen and (max-width: 980px) {
+	form.login {
+		width: 95%;
+		float: none;
+	}
+}

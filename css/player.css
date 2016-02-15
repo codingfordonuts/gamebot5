@@ -1,0 +1,122 @@
+/* 
+	Created on : 13-Feb-2016, 12:02:12 PM
+	Author     : yoseph
+*/
+
+#playerSelect {
+	padding-bottom: 1.5em;
+	font-weight: 600;
+}
+
+div.contentleft {
+	display: inline-block;
+}
+
+#avatar > img {
+	padding: 1.5em;
+	border: 2px #002166 solid;
+}
+
+div.content-right {
+	width: 60%;
+	display: inline-block;
+	margin-left: 5%;
+}
+
+#playerDetails {
+	width: auto;
+	display: inline-block;
+}
+
+#playerDetails > p > label {
+	display: inline-block;
+	width: 90px;
+	text-align: left;
+	color: #3f312e;
+}
+
+#playerDetails > p {
+	font-size: 1.2em;
+}
+
+#playerCards {
+
+	display: inline-block;
+	padding-bottom: 2em;
+}
+
+caption {
+	text-align: left;
+	font-weight: bold;
+	padding-left: 10px;
+	font-size: 1.0em;
+}
+
+.center {
+	margin-left: 10%;
+}
+
+@media only screen and (max-width: 980px) {
+	#content-in{
+		float: none;
+		margin: 0 auto;
+		padding: 1em 0 1em 0em;
+	}
+
+	.center {
+		text-align: center;
+		width: auto;
+		margin: 0 auto;
+	}
+
+	#playerDetails > p {
+		text-align: left;
+	}
+
+	div.content-right {
+		width: 99%;
+		display: inline-block;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	#playerCards {
+		width: 100%;
+	}
+
+	.content-right > div > table > caption{
+		font-size: 1.2em;
+	}
+}
+
+@media only screen and (max-width: 619px) {
+	#content-in{
+		float: none;
+		margin: 0 auto;
+		padding: 1em 0 1em 0em;
+	}
+
+	.center {
+		text-align: center;
+		width: auto;
+	}
+
+	#playerDetails > p {
+		text-align: left;
+	}
+
+	div.content-right {
+		width: 99%;
+		display: inline-block;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	#playerCards {
+		width: 100%;
+	}
+
+	.content-right > div > table > caption{
+		font-size: 1.2em;
+	}
+}

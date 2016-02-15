@@ -1,16 +1,17 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends Application {
 
 	/**
 	 * Index Page for this controller.
 	 *
 	 * Maps to the following URL
 	 * 		http://example.com/index.php/welcome
-	 *	- or -
+	 * 	- or -
 	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
+	 * 	- or -
 	 * Since this controller is set as the default controller in
 	 * config/routes.php, it's displayed at http://example.com/
 	 *
@@ -18,8 +19,67 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		$this->load->view('welcome_message');
+	public function index() {
+		$this->data['pagebody'] = 'home'; // this is the view we want shown
+		$this->data['gameStatus'] = "Offline - Currently under development";
+
+		//get the data from all tables
+		$players = $this->players->all();
+		$cards = $this->collections->all();
+		$table = $this->series->all();
+
+		$playersTable = array();
+		foreach ($players as $player) {
+			$pRow = array(
+				//calling the columns from the database players column
+				'link' => $this->data['appRoot'] . "/player/" . $player->Player,
+				'Player' => $player->Player,
+				'Peanuts' => $player->Peanuts,
+				'Equity' => (count($this->collections->some('Player', $player->Player)) + $player->Peanuts)
+			);
+
+			$playersTable[] = $pRow;
+		}
+
+		// Obtain a list of columns
+		foreach ($playersTable as $key => $row) {
+			$equity[$key] = $row['Equity'];
+			$name[$key] = $row['Player'];
+		}
+
+		// Sort the data with equity descending, player name ascending
+		// Add $playersTable as the last parameter, to sort by the common key
+		array_multisort($equity, SORT_DESC, $name, SORT_ASC, $playersTable);
+
+
+		$PlayerSummary['Players'] = $playersTable;
+		$this->data['playerInfo'] = $this->parser->parse('_playerinfo1', $PlayerSummary, true);
+
+		$series = array();
+		foreach ($table as $type) {
+			$row = array(
+				//calling the columns from the database series column
+				'Series' => $type->Series,
+				'Description' => $type->Description,
+				'Frequency' => $type->Frequency,
+				'Value' => $type->Value,
+				'Quantity' => 0
+			);
+			$series[] = $row;
+		}
+
+		// Get all cards in db
+		foreach ($cards as $card) {
+			$key = array_search(substr($card->Piece, 0, 2), array_column($series, 'Series'));
+			$series[$key]['Quantity'] ++;
+		}
+
+		$summary['collection'] = $series;
+		$this->data['botPieceSummary'] = $this->parser->parse('_pieceSummary', $summary, true);
+
+		$this->pageStyles[] = "home";
+		
+		$this->render();
 	}
+
 }
