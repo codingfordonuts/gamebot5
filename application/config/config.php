@@ -7,6 +7,7 @@ $config['menu_choices'] = array(
 		array('name' => 'Home', 'link' => '/'),
 		array('name' => 'Player Portfolio', 'link' => '/player'),
 		array('name' => 'Assemble', 'link' => '/assemble'),
+		array('name' => 'Account Info', 'link' => '/account')
 	)
 );
 /*

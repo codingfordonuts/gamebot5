@@ -103,6 +103,13 @@ interface Active_record {
 	 * @return mixed The selected records, as an array of records
 	 */
 	function some($what, $which);
+
+	/**
+	 * Truncate an existing DB table
+	 * If TRUNCATE is not available, truncate() will execute 'DELETE FROM table'
+	 * @param string $table Table to Truncate
+	 */
+	function truncate();
 }
 
 /**
@@ -189,7 +196,21 @@ class MY_Model extends CI_Model implements Active_Record {
 		}
 		// update the DB table appropriately
 		$key = $data[$this->_keyField];
-		$object = $this->db->insert($this->_tableName, $data);
+		return $this->db->insert($this->_tableName, $data);
+	}
+
+	// Adds a batch of records to DB
+	function add_batch($records)
+	{
+		// convert object to associative array, if needed
+		if (is_object($records))
+		{
+			$data = get_object_vars($records);
+		} else
+		{
+			$data = $records;
+		}
+		return $this->db->insert_batch($this->_tableName, $data);
 	}
 
 	// Retrieve an existing DB record as an object
@@ -216,14 +237,14 @@ class MY_Model extends CI_Model implements Active_Record {
 		// update the DB table appropriately
 		$key = $data[$this->_keyField];
 		$this->db->where($this->_keyField, $key);
-		$object = $this->db->update($this->_tableName, $data);
+		return $this->db->update($this->_tableName, $data);
 	}
 
 	// Delete a record from the DB
 	function delete($key, $key2 = null)
 	{
 		$this->db->where($this->_keyField, $key);
-		$object = $this->db->delete($this->_tableName);
+		return $this->db->delete($this->_tableName);
 	}
 
 	// Determine if a key exists
@@ -280,6 +301,24 @@ class MY_Model extends CI_Model implements Active_Record {
 			return null;
 	}
 
+	// Return the most recent records as a result set
+	function trailing($count = 10)
+	{
+		$start = $this->db->count_all($this->_tableName) - $count;
+		if ($start < 0)
+			$start = 0;
+		$this->db->limit($count, $start);
+		$this->db->order_by($this->_keyField, 'desc');
+		$query = $this->db->get($this->_tableName);
+		return $query->result();
+	}
+
+	// Truncate Table
+	function truncate()
+	{
+		return $this->db->truncate($this->_tableName);
+	}
+
 }
 
 class MY_Model2 extends MY_Model {
@@ -324,7 +363,7 @@ class MY_Model2 extends MY_Model {
 		$key2 = $data[$this->_keyField2];
 		$this->db->where($this->_keyField, $key);
 		$this->db->where($this->_keyField2, $key2);
-		$object = $this->db->update($this->_tableName, $data);
+		return $this->db->update($this->_tableName, $data);
 	}
 
 	// Delete a record from the DB
@@ -332,7 +371,7 @@ class MY_Model2 extends MY_Model {
 	{
 		$this->db->where($this->_keyField, $key1);
 		$this->db->where($this->_keyField2, $key2);
-		$object = $this->db->delete($this->_tableName);
+		return $this->db->delete($this->_tableName);
 	}
 
 	// Determine if a key exists
@@ -363,7 +402,7 @@ class MY_Model2 extends MY_Model {
 	function delete_some($key)
 	{
 		$this->db->where($this->_keyField, $key);
-		$object = $this->db->delete($this->_tableName);
+		return $this->db->delete($this->_tableName);
 	}
 
 	// Determine the highest secondary key associated with a primary

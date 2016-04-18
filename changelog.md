@@ -2,6 +2,27 @@
 >Template: * YYYY-MM-DD HH:MM - Comment
 
 ### Changelog for Assignment 2
+* 2016-04-07 03:55 - Sell function working.
+* 2016-04-17 00:30 - Player Summary changed to Active Players Leaderboard.  Added Server Latest Transactions and Agent latest transactions
+* 2016-04-16 23:00 - Truncate tables on pageload if server is on new round.  Moved agent registration to buy function as the agent would then be considered active.
+* 2016-04-16 22:15 - Fixed updating server URL procedure and checks.  Also re-worded and re-arranged some content in admin management.
+* 2016-04-16 01:00 - Main Feature:  Agent Management.  Agent db table overhauled.  Also tackled some bugs due to some of agent management options.  Placeholders for text fields added.  Buy implementation working again to server.
+* 2016-04-14 21:15 - Fixed Buy Implementation, including checks.  Buy Button now on portfolio page, and only on your own portfolio page.  Added truncating tables options for local db if new round.  Assemble page updated to for state and no card messages.  Added new card slices from server.
+* 2016-04-14 11:33 - Done implementing the buy function
+* 2016-04-04 11:15 - Added Admin Promote/Demote to Player management.  Optimized back-end code of Admin Controller.  Status messages after actions of player management fixed.
+* 2016-04-13 18:00 - Optimized Agent Registration (and added sql to generate the agent db table), Game status now shows on all pages, formatting for static messages, fix for Admin Delete Accounts
+* 2016-04-13 03:00 - Player Management sections complete, Agent DB Sql Create, minor renaming of variables, added DB TRUNCATE to Model Class, adjusted Site Title
+* 2016-04-12 16:15 - Added more info to be displayed about game status
+* 2016-04-12 14:42 - Added Agent Registration function
+* 2016-04-12 12:49 - Adjusted gameStatus, to put data into an array under certain circumnstances
+* 2016-04-12 12:07 - Adjusted gameStatus
+* 2016-04-12 12:00 - Increased Avatar Size to 175px x 200px
+* 2016-04-12 11:32 - Added Account Info link to navigation for all.
+* 2016-04-12 11:22 - Added User Avatar Uploads on registration and change views, with some minor formatting for forms and avatar img.
+* 2016-04-11 20:22 - Game status is finished, displayed on front page.
+* 2016-04-10 03:15 - Fixed player last update bug.
+* 2016-04-10 02:55 - Added User Registration features, including password reset.  Added feature: showing additional links when logged in.  Optimized some back-end stuff.
+* 2016-04-07 13:50 - Added padding in the content and moved login into the menu bar
 
 ### Changelog for Assignment 1
 * 2016-04-07 11:15 - Modified SQL for marking compatibility reasons. (removed foreign keys and triggers)

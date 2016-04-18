@@ -14,11 +14,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="center">
 	<div class="contentleft">
 		<div id="avatar">
+			<span class="helper"></span>
 			<img id="avatarImg" alt="User Avatar" src="{avatar}" />
 		</div>
 		<div id="playerDetails">
 			<p><label>Name:</label>  <strong>{playerName}</strong></p>
 			<p><label>Peanuts:</label>  <strong>{peanuts}</strong></p>
+			<p><label>Quantity:</label>  <strong>{cards}</strong> cards</p>
+			<p>{buyButton}</p>
 		</div>
 	</div>
 	<div class="content-right">
